@@ -1,0 +1,10 @@
+
+.header {
+    padding: 30px 0;
+    color: black;
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+    border-bottom: 10px blue;
+    margin-bottom: 10px;
+}
