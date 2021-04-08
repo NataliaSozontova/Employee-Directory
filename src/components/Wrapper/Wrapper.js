@@ -9,29 +9,45 @@ class Wrapper extends Component {
   // Setting the initial state of the Wrapper
  
   state = {
-    employees: []
+    //  employees: [{"name":"kate"}]
+    employees: null
   };
 
   componentDidMount(){
     // axios.get('https://randomuser.me/api/?results=100').then(response => {
     //    console.log(" reswponce is - " + response);
     //   });
-    this.getEmployees();
+    axios.get('https://randomuser.me/api/?results=10')
+    .then(response => {
+      console.log(response.data.results)
+      this.setState({employees: response.data.results}, console.log(this.state));
+      // response.data.results.map(employee => ({
+      //   image: `${employee.picture.medium}`,
+      //   name: `${employee.name.first} ${employee.name.last}`,
+      //   email: `${employee.email}`,
+      //   phone: `${employee.phone}`,
+      //   location: `${employee.location.street} ${employee.location.city} ${employee.location.state} ${employee.location.postcode}`,
+      //   dob: `${employee.dob.date}`
+      // }));
+  });
+    // this.getEmployees();
   }
 
-  getEmployees() {
-      axios.get('https://randomuser.me/api/?results=100')
-      .then(response => response.data.results.map(employee => ({
-          image: `${employee.picture.medium}`,
-          name: `${employee.name.first} ${employee.name.last}`,
-          email: `${employee.email}`,
-          phone: `${employee.phone}`,
-          location: `${employee.location.street} ${employee.location.city} ${employee.location.state} ${employee.location.postcode}`,
-          dob: `${employee.dob.date}`,
-
-      })))
-  }
-
+  // getEmployees = () =>  {
+  //     axios.get('https://randomuser.me/api/?results=10')
+  //     .then(response => {
+  //       console.log(response.data.results)
+  //       this.setState({employees: response.data.results}, console.log(this.state));
+        // response.data.results.map(employee => ({
+        //   image: `${employee.picture.medium}`,
+        //   name: `${employee.name.first} ${employee.name.last}`,
+        //   email: `${employee.email}`,
+        //   phone: `${employee.phone}`,
+        //   location: `${employee.location.street} ${employee.location.city} ${employee.location.state} ${employee.location.postcode}`,
+        //   dob: `${employee.dob.date}`
+        // }));
+  //   });
+  // }
 
   // The render method returns the JSX that should be rendered
   render() {
@@ -39,17 +55,16 @@ class Wrapper extends Component {
       <div>
         <Header>Hello</Header>
         Hello test
-        <Search>
+        <Search/>
                 
-            </Search>  
-        <TableHolder>
-            employees = {this.state.employees}
-        </TableHolder>
+         
+        <TableHolder
+            employees = {this.state.employees} />
+      
       </div>
     );
   }
 }
 
 
-export default Wrapper
-;
+export default Wrapper;

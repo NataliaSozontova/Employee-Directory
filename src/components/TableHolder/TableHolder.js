@@ -1,16 +1,18 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 
-function TableHolder() {
-  var employees = [{ "name": "Kate", "email": "t@com" }];
-
+function TableHolder(props) {
+  // var employees = [{ "name": "Kate", "email": "t@com" }];
+  // var employees = props.employees;
+  
   return (
     <div className="App">
       Table
+      {console.log("inside table => " + props.employees)}
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
+            {/* <th>#</th> */}
             <th>Image</th>
             <th>Name</th>
             <th>Email</th>
@@ -19,34 +21,20 @@ function TableHolder() {
             <th>DOB</th>
           </tr>
         </thead>
-        <tbody>
-          {employees.map(employee => (
-            <tr>
+        {/* <tbody>
+          {props.employees.map(employee => (
+            <tr key = {employee.id.value}>
+              <td>{employee.image}</td>
               <td>{employee.name}</td>
               <td>{employee.email}</td>
-
+              <td>{employee.phone}</td>
+              <td>{employee.location}</td>
+              <td>{employee.dob}</td>
             </tr>
           )
 
           )}
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
+        </tbody> */}
       </Table>
 
     </div>
