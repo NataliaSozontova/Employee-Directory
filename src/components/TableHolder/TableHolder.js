@@ -7,34 +7,34 @@ function TableHolder(props) {
   
   return (
     <div className="App">
-      Table
-      {console.log("inside table => " + props.employees)}
+      
       <Table striped bordered hover>
         <thead>
           <tr>
             {/* <th>#</th> */}
             <th>Image</th>
-            <th>Name</th>
+            <th>Name <button onClick={props.handleSort }>Sort By Name</button></th>
+            
             <th>Email</th>
             <th>Phone</th>
-            <th>Location</th>
             <th>DOB</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {props.employees.map(employee => (
             <tr key = {employee.id.value}>
-              <td>{employee.image}</td>
-              <td>{employee.name}</td>
+              <td> 
+                <img src = {employee.picture.thumbnail}/>
+                </td>
+              <td>{employee.name.first}</td>
               <td>{employee.email}</td>
               <td>{employee.phone}</td>
-              <td>{employee.location}</td>
-              <td>{employee.dob}</td>
+              <td>{employee.dob.date}</td>
             </tr>
           )
 
           )}
-        </tbody> */}
+        </tbody>
       </Table>
 
     </div>

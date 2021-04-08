@@ -10,7 +10,8 @@ class Wrapper extends Component {
  
   state = {
     //  employees: [{"name":"kate"}]
-    employees: null
+    employees: [],
+    filteredUsers: []
   };
 
   componentDidMount(){
@@ -20,7 +21,8 @@ class Wrapper extends Component {
     axios.get('https://randomuser.me/api/?results=10')
     .then(response => {
       console.log(response.data.results)
-      this.setState({employees: response.data.results}, console.log(this.state));
+      
+      this.setState({employees: response.data.results, filteredUsers: response.data.results});
       // response.data.results.map(employee => ({
       //   image: `${employee.picture.medium}`,
       //   name: `${employee.name.first} ${employee.name.last}`,
@@ -49,17 +51,39 @@ class Wrapper extends Component {
   //   });
   // }
 
+  handleSearch = (event) => {
+    const filtered = this.state.employees.filter(employee => employee.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+    console.log(filtered); 
+    this.setState({filteredUsers: filtered});
+  }
+
+  handleSort = (event) => {
+    console.log("clicking on sort");
+     //USE -TODO filteredUser.sort() = javascriptmethod
+
+    //   if (order === 'desc') {
+    //     // this.refs.table.handleSort('asc', 'name');
+      
+    //     order = 'asc';
+    //   } else {
+    //     // this.refs.table.handleSort('desc', 'name');
+    //     order = 'desc';
+    //   }
+    // }
+  
+  }
   // The render method returns the JSX that should be rendered
   render() {
     return (
       <div>
         <Header>Hello</Header>
         Hello test
-        <Search/>
+        <Search handleSearch = {this.handleSearch}/>
                 
          
         <TableHolder
-            employees = {this.state.employees} />
+            employees = {this.state.filteredUsers} 
+            handleSort = {this.handleSort}/>
       
       </div>
     );
