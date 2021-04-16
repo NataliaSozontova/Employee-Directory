@@ -11,7 +11,6 @@ function TableHolder(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            { <th>#</th> }
             <th>Image</th>
             <th>Name 
               <button onClick={props.handleSort }>Sort</button> 
@@ -28,10 +27,10 @@ function TableHolder(props) {
               <td> 
                 <img src = {employee.picture.thumbnail}/>
                 </td>
-              <td>{employee.name.first}</td>
+              <td>{employee.name.first} {employee.name.last}</td>
               <td>{employee.email}</td>
               <td>{employee.phone}</td>
-              <td>{employee.dob.date}</td>
+              <td>{employee.dob.date.substring(0, employee.dob.date.indexOf("T"))}</td>
             </tr>
           )
 

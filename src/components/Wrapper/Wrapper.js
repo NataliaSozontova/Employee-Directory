@@ -11,7 +11,8 @@ class Wrapper extends Component {
   state = {
     //  employees: [{"name":"kate"}]
     employees: [],
-    filteredUsers: []
+    filteredUsers: [],
+    sort: "desc"
   };
 
   componentDidMount(){
@@ -32,26 +33,44 @@ class Wrapper extends Component {
 
   }
 
+  // if (this.state.sort === "desc") {
+  //   const filteredUsers = // Sort desc here
+  //   this.setState({...state, filteredUsers, sort: 'asc"})
+  // } else {
+  //   const filteredUsers = // Sort asc here
+  //   this.setState({...state, filteredUsers, sort: 'desc"})
+  // }
   //sort by first name function
   handleSort = (event) => {
+    console.log("state for sort =>" + this.state.sort);
     console.log("clicking on sort");
 
+    if(this.state.sort === 'acs'){
+      const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
+        var nameA = a.name.first.toLowerCase(); 
+        var nameB = b.name.first.toLowerCase(); 
+        if (nameA < nameB) {
+          console.log("sorting desc");
+          return -1;
+        }
+      });
+        this.setState({filteredUsers: sortedUsers, sort: 'desc'});
+        console.log("state for sort =>" + this.state.sort);
+    
+   } else {
     const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
       var nameA = a.name.first.toLowerCase(); 
       var nameB = b.name.first.toLowerCase(); 
-      if (nameA < nameB) {
-        console.log("sorting asc");
-        return -1;
-      }
       if (nameA > nameB) {
-        console.log("sorting desc");
+        console.log("sorting asc");
         return 1;
       }
-      // names must be equal
-       return 0;
-     });
-
-    this.setState({filteredUsers: sortedUsers});
+    });
+      this.setState({filteredUsers: sortedUsers, sort: 'acs'});
+      console.log("state for sort =>" + this.state.sort);
+  
+  }
+     
   }
 
   // The render method returns the JSX that should be rendered
