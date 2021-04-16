@@ -15,76 +15,54 @@ class Wrapper extends Component {
   };
 
   componentDidMount(){
-    // axios.get('https://randomuser.me/api/?results=100').then(response => {
-    //    console.log(" reswponce is - " + response);
-    //   });
-    axios.get('https://randomuser.me/api/?results=10')
+    axios.get('https://randomuser.me/api/?results=50&nat=us')
     .then(response => {
-      console.log(response.data.results)
-      
+      console.log(response.data.results) 
       this.setState({employees: response.data.results, filteredUsers: response.data.results});
-      // response.data.results.map(employee => ({
-      //   image: `${employee.picture.medium}`,
-      //   name: `${employee.name.first} ${employee.name.last}`,
-      //   email: `${employee.email}`,
-      //   phone: `${employee.phone}`,
-      //   location: `${employee.location.street} ${employee.location.city} ${employee.location.state} ${employee.location.postcode}`,
-      //   dob: `${employee.dob.date}`
-      // }));
-  });
-    // this.getEmployees();
+  });  
   }
 
-  // getEmployees = () =>  {
-  //     axios.get('https://randomuser.me/api/?results=10')
-  //     .then(response => {
-  //       console.log(response.data.results)
-  //       this.setState({employees: response.data.results}, console.log(this.state));
-        // response.data.results.map(employee => ({
-        //   image: `${employee.picture.medium}`,
-        //   name: `${employee.name.first} ${employee.name.last}`,
-        //   email: `${employee.email}`,
-        //   phone: `${employee.phone}`,
-        //   location: `${employee.location.street} ${employee.location.city} ${employee.location.state} ${employee.location.postcode}`,
-        //   dob: `${employee.dob.date}`
-        // }));
-  //   });
-  // }
-
+  //search by first name function
   handleSearch = (event) => {
-    const filtered = this.state.employees.filter(employee => employee.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
-    console.log(filtered); 
+    const filtered = this.state.employees.filter(
+      employee => employee.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) === 0);
+    console.log("filters users " + filtered); 
     this.setState({filteredUsers: filtered});
+    console.log("firstname => " + this.state.employees[0].name.first.toLowerCase().indexOf(event.target.value.toLowerCase()));
+
   }
 
+  //sort by first name function
   handleSort = (event) => {
     console.log("clicking on sort");
-     //USE -TODO filteredUser.sort() = javascriptmethod
 
-    //   if (order === 'desc') {
-    //     // this.refs.table.handleSort('asc', 'name');
-      
-    //     order = 'asc';
-    //   } else {
-    //     // this.refs.table.handleSort('desc', 'name');
-    //     order = 'desc';
-    //   }
-    // }
-  
+    const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
+      var nameA = a.name.first.toLowerCase(); 
+      var nameB = b.name.first.toLowerCase(); 
+      if (nameA < nameB) {
+        console.log("sorting asc");
+        return -1;
+      }
+      if (nameA > nameB) {
+        console.log("sorting desc");
+        return 1;
+      }
+      // names must be equal
+       return 0;
+     });
+
+    this.setState({filteredUsers: sortedUsers});
   }
+
   // The render method returns the JSX that should be rendered
   render() {
     return (
       <div>
-        <Header>Hello</Header>
-        Hello test
-        <Search handleSearch = {this.handleSearch}/>
-                
-         
+        <Header></Header>
+        <Search handleSearch = {this.handleSearch}/>  
         <TableHolder
             employees = {this.state.filteredUsers} 
-            handleSort = {this.handleSort}/>
-      
+             handleSort = {this.handleSort} />
       </div>
     );
   }

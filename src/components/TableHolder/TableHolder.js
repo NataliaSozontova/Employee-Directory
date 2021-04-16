@@ -11,9 +11,11 @@ function TableHolder(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            {/* <th>#</th> */}
+            { <th>#</th> }
             <th>Image</th>
-            <th>Name <button onClick={props.handleSort }>Sort By Name</button></th>
+            <th>Name 
+              <button onClick={props.handleSort }>Sort</button> 
+              </th>
             
             <th>Email</th>
             <th>Phone</th>

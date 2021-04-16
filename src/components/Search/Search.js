@@ -11,9 +11,9 @@ function Search(props) {
               aria-label="Search"
               onChange={event => props.handleSearch(event)}
           />
-          <button className="btn btn-primary my-2 my-sm-0" type="submit">
+          {/* <button className="btn btn-primary my-2 my-sm-0" type="submit">
               Search
-           </button>
+           </button> */}
       </form>
   </div>
     );
