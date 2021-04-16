@@ -69,7 +69,7 @@ class Wrapper extends Component {
       this.setState({filteredUsers: sortedUsers, sort: 'desc'});
       console.log("state for sort =>" + this.state.sort);
   
-  }git
+  }
      
   }
 
