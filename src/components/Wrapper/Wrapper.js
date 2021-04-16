@@ -45,16 +45,16 @@ class Wrapper extends Component {
     console.log("state for sort =>" + this.state.sort);
     console.log("clicking on sort");
 
-    if(this.state.sort === 'acs'){
+    if(this.state.sort === 'desc'){
       const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
         var nameA = a.name.first.toLowerCase(); 
         var nameB = b.name.first.toLowerCase(); 
         if (nameA < nameB) {
-          console.log("sorting desc");
+          console.log("sorting acs");
           return -1;
         }
       });
-        this.setState({filteredUsers: sortedUsers, sort: 'desc'});
+        this.setState({filteredUsers: sortedUsers, sort: 'acs'});
         console.log("state for sort =>" + this.state.sort);
     
    } else {
@@ -62,14 +62,14 @@ class Wrapper extends Component {
       var nameA = a.name.first.toLowerCase(); 
       var nameB = b.name.first.toLowerCase(); 
       if (nameA > nameB) {
-        console.log("sorting asc");
+        console.log("sorting desc");
         return 1;
       }
     });
-      this.setState({filteredUsers: sortedUsers, sort: 'acs'});
+      this.setState({filteredUsers: sortedUsers, sort: 'desc'});
       console.log("state for sort =>" + this.state.sort);
   
-  }
+  }git
      
   }
 
