@@ -63,7 +63,7 @@ class Wrapper extends Component {
       var nameB = b.name.first.toLowerCase(); 
       if (nameA > nameB) {
         console.log("sorting desc");
-        return 1;
+        return -1;
       }
     });
       this.setState({filteredUsers: sortedUsers, sort: 'desc'});
