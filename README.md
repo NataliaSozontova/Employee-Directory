@@ -33,7 +33,7 @@ This is a Employee Directory React application. The user will be able to view  e
 https://github.com/NataliaSozontova/Employee-Directory
 
 * Open application live URL in your browser.
-
+https://nataliasozontova.github.io/Employee-Directory/
 
 ## Tests
 * There are no tests yet for this application
