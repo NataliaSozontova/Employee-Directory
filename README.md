@@ -1,7 +1,9 @@
 # Employee Directory
 
 ## Description
-This is a Employee Directory react application. The user will be able to view  entire employee directory at once so that user has a quick access to their information.
+This is a Employee Directory React application. The user will be able to view  entire employee directory at once so that user has a quick access to their information.
+
+![Screenshot](/public/assets/images/app.png)
 
 ## Table of Contents
 * [Features](#features)
@@ -15,15 +17,15 @@ This is a Employee Directory react application. The user will be able to view  e
 ## Features
 * List of employees
 
-![Screenshot](/public/assets/images/addOffline_1.png)
+![Screenshot](/public/assets/images/list.png)
 
 * Search by name functionality
 
-![Screenshot](/public/assets/images/subtractOfline_1.png)
+![Screenshot](/public/assets/images/search.png)
 
 * Sort by name functionality
 
-![Screenshot](/public/assets/images/onlineData.png)
+![Screenshot](/public/assets/images/sort.png)
 
 
 ## Installation 
@@ -34,7 +36,6 @@ https://github.com/NataliaSozontova/Employee-Directory
 
 
 ## Tests
-
 * There are no tests yet for this application
 
 ## Known Bugs

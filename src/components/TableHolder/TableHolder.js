@@ -1,21 +1,18 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import './style.css';
 
 function TableHolder(props) {
-  // var employees = [{ "name": "Kate", "email": "t@com" }];
-  // var employees = props.employees;
   
   return (
     <div className="App">
-      
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Image</th>
-            <th>Name 
-              <button onClick={props.handleSort }>Sort</button> 
+            <th>Name
+              <button class="button" onClick={props.handleSort }>Sort</button> 
               </th>
-            
             <th>Email</th>
             <th>Phone</th>
             <th>DOB</th>
@@ -25,7 +22,7 @@ function TableHolder(props) {
           {props.employees.map(employee => (
             <tr key = {employee.id.value}>
               <td> 
-                <img src = {employee.picture.thumbnail}/>
+                <img alt="employee" src = {employee.picture.thumbnail}/>
                 </td>
               <td>{employee.name.first} {employee.name.last}</td>
               <td>{employee.email}</td>
@@ -33,11 +30,9 @@ function TableHolder(props) {
               <td>{employee.dob.date.substring(0, employee.dob.date.indexOf("T"))}</td>
             </tr>
           )
-
           )}
         </tbody>
       </Table>
-
     </div>
   );
 }

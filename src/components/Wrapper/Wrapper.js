@@ -6,10 +6,9 @@ import axios from 'axios';
 
 // By extending the React.Component class, Wrapper inherits functionality from it
 class Wrapper extends Component {
+  
   // Setting the initial state of the Wrapper
- 
   state = {
-    //  employees: [{"name":"kate"}]
     employees: [],
     filteredUsers: [],
     sort: "desc"
@@ -23,7 +22,7 @@ class Wrapper extends Component {
   });  
   }
 
-  //search by first name function
+  //search by first name 
   handleSearch = (event) => {
     const filtered = this.state.employees.filter(
       employee => employee.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) === 0);
@@ -33,14 +32,7 @@ class Wrapper extends Component {
 
   }
 
-  // if (this.state.sort === "desc") {
-  //   const filteredUsers = // Sort desc here
-  //   this.setState({...state, filteredUsers, sort: 'asc"})
-  // } else {
-  //   const filteredUsers = // Sort asc here
-  //   this.setState({...state, filteredUsers, sort: 'desc"})
-  // }
-  //sort by first name function
+  //sort by first name
   handleSort = (event) => {
     console.log("state for sort =>" + this.state.sort);
     console.log("clicking on sort");
@@ -53,6 +45,7 @@ class Wrapper extends Component {
           console.log("sorting acs");
           return -1;
         }
+        return 0;
       });
         this.setState({filteredUsers: sortedUsers, sort: 'acs'});
         console.log("state for sort =>" + this.state.sort);
@@ -65,12 +58,11 @@ class Wrapper extends Component {
         console.log("sorting desc");
         return -1;
       }
+      return 0;
     });
       this.setState({filteredUsers: sortedUsers, sort: 'desc'});
-      console.log("state for sort =>" + this.state.sort);
-  
-  }
-     
+      console.log("state for sort =>" + this.state.sort); 
+  }   
   }
 
   // The render method returns the JSX that should be rendered
@@ -78,7 +70,8 @@ class Wrapper extends Component {
     return (
       <div>
         <Header></Header>
-        <Search handleSearch = {this.handleSearch}/>  
+        <Search handleSearch = {this.handleSearch}/> 
+        <br></br> 
         <TableHolder
             employees = {this.state.filteredUsers} 
              handleSort = {this.handleSort} />
@@ -86,6 +79,5 @@ class Wrapper extends Component {
     );
   }
 }
-
 
 export default Wrapper;
